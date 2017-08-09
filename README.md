@@ -104,6 +104,68 @@ COMING SOON!
 
 COMING SOON!
 
-** Additional Helpful Tools for Debugging/Tuning 
+# Additional Helpful Tools for Debugging/Tuning #
+With so many degrees of freedom, debugging and troubleshooting can be a painful process.
+In order to make things a little bit simpler, we've provided some tools that might make
+life a little bit easier.
 
-COMING SOON!
+**Constraining Forces and Torques**
+It is possible to constrain forces and torques on the quad rotor's body frame.
+This can be useful if you're trying to debug only a single degree of freedom.
+
+Example: Dissalow movement along the quad's X axis
+```
+$ rosservice call /quad_rotor/x_force_constrained "data: true"
+```
+Example: Dissallow rotation about the quad's X axis
+```
+$ rosservice call /quad_rotor/x_torque_constrained "data: true"
+```
+
+**Setting the Camera Pose**
+To set the camera pose you can either, right click in the simulator, and drag
+or you can use the following service call, where the data parameter may take on the following
+values:
+0: Orthogonal to the inertial frame's YZ plane, facing the positive X direction.
+1: Orthogonal to the inertial frame's XZ plane, facing the positive Y direction.
+2: Orthogonal to the intertial frame's XY plane, facing the negative Z direction.
+3: Perspective view, facing the quad's body frame origin from the -X,-Y, +Z quadrant.
+
+```
+$ rosservice call /quad_rotor/camera_pose_type "data: 0"
+```
+To reset the camera pose, to the default pose, you ca use the service call, or right click.
+
+**Setting the Camera Distance**
+To set the distance between the camera and the quad's body frame, you can use the
+`/quad_rotor/camera_distance` service. For example, to set the camera distance to be
+20 meters, you would call the service as follows:
+```
+$ rosservice call /quad_rotor/camera_distance "data: 20.0"
+```
+
+To reset the camera distance to the default, simply right click in the simulator.
+
+**Disabling Gravity**
+Gravity can be a harsh reality. Particularly when you're dealing with attitude tuning.
+Fortunately, we can disable gravity in the simulator for the purposes of debugging.
+To so, call the `/quad_rotor/gravity` service as follows:
+```
+$ rosservice call /quad_rotor/gravity "data: false"
+```
+
+**Setting Pose**
+To set the quad pose, use the `/quad_rotor/set_pose` service. The following service call
+will place the quad at the origin:
+```
+$ rosservice call /quad_rotor/set_pose "pose:
+  position:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  orientation:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0" 
+```
