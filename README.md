@@ -110,6 +110,7 @@ In order to make things a little bit simpler, we've provided some tools that mig
 life a little bit easier.
 
 **Constraining Forces and Torques**
+
 It is possible to constrain forces and torques on the quad rotor's body frame.
 This can be useful if you're trying to debug only a single degree of freedom.
 
@@ -123,6 +124,7 @@ $ rosservice call /quad_rotor/x_torque_constrained "data: true"
 ```
 
 **Setting the Camera Pose**
+
 To set the camera pose you can either, right click in the simulator, and drag
 or you can use the following service call, where the data parameter may take on the following
 values:
@@ -137,6 +139,7 @@ $ rosservice call /quad_rotor/camera_pose_type "data: 0"
 To reset the camera pose, to the default pose, you ca use the service call, or right click.
 
 **Setting the Camera Distance**
+
 To set the distance between the camera and the quad's body frame, you can use the
 `/quad_rotor/camera_distance` service. For example, to set the camera distance to be
 20 meters, you would call the service as follows:
@@ -147,6 +150,7 @@ $ rosservice call /quad_rotor/camera_distance "data: 20.0"
 To reset the camera distance to the default, simply right click in the simulator.
 
 **Disabling Gravity**
+
 Gravity can be a harsh reality. Particularly when you're dealing with attitude tuning.
 Fortunately, we can disable gravity in the simulator for the purposes of debugging.
 To so, call the `/quad_rotor/gravity` service as follows:
@@ -155,6 +159,7 @@ $ rosservice call /quad_rotor/gravity "data: false"
 ```
 
 **Setting Pose**
+
 To set the quad pose, use the `/quad_rotor/set_pose` service. The following service call
 will place the quad at the origin:
 ```
