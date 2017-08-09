@@ -97,10 +97,13 @@ Tune parameters until the controller is well-behaved.
 This should not be a very familiar, albeit potentially more difficult problem.
 
 **Step 3: Test Against a Desired Trajectory**
+
 COMING SOON!
 
 **Step 4: Plotting and Scoring** 
+
 COMING SOON!
 
-** Additional Helpful Tools for Debugging/Tuning **
+** Additional Helpful Tools for Debugging/Tuning 
+
 COMING SOON!
