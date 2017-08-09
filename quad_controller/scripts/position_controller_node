@@ -90,7 +90,6 @@ class PositionControllerNode():
         self.z_controller_.setMaxWindup(config.z_ki_max)
         self.z_controller_.setKD(config.z_kd)
 
-        print('dr:{}'.format(config.use_dr_set_point))
         # Dynamic Reconfig Setpoint
         if config.use_dr_set_point:
             self.x_controller_.setTarget(config.set_point_x)

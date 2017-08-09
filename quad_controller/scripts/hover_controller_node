@@ -25,7 +25,7 @@ class HoverControllerNode():
         ki = float(rospy.get_param('ki', '0'))
         kd = float(rospy.get_param('kd', '0'))
 
-        self.controller_ = PIDController(kp, ki, kd, ki_max, rospy.Time.now().to_sec())
+        self.controller_ = PIDController(kp, ki, kd, ki_max)
 
         self.pose_sub_ = rospy.Subscriber("/quad_rotor/pose", PoseStamped, self.pose_callback)
         self.cmd_force_pub_ = rospy.Publisher("/quad_rotor/cmd_force", Wrench, queue_size=10)

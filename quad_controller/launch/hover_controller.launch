@@ -1,6 +1,6 @@
 <launch>
 
-    <node name="2d_world_setup" pkg="quad_controller" type="setup_2d_hover_world.sh" >
+    <node name="setup_2d_world" pkg="quad_controller" type="setup_2d_hover_world.sh" />
 
     <node name="hover_controller" pkg="quad_controller" type="hover_controller_node" output="screen" >
     </node>

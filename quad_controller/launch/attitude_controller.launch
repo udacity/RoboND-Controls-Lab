@@ -1,5 +1,7 @@
 <launch>
 
+    <node name="setup_attitude_world" pkg="quad_controller" type="setup_attitude_world.sh" output="screen" />
+
     <node name="attitude_controller" pkg="quad_controller" type="attitude_controller_node" output="screen" >
       <rosparam command="load" file="$(find quad_controller)/config/attitude_controller_config.yaml" />
     </node>

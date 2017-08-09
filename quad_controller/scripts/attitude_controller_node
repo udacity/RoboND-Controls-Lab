@@ -63,23 +63,26 @@ class AttitudeControllerNode():
     def config_callback(self, config, level):
         rospy.loginfo('Attitude controller config changed!')
 
-        self.roll_controller_.setTarget(config.roll_set_point)
         self.roll_controller_.setKP(config.roll_kp)
         self.roll_controller_.setKI(config.roll_ki)
         self.roll_controller_.setMaxWindup(config.roll_ki_max)
         self.roll_controller_.setKD(config.roll_kd)
 
-        self.pitch_controller_.setTarget(config.pitch_set_point)
         self.pitch_controller_.setKP(config.pitch_kp)
         self.pitch_controller_.setKI(config.pitch_ki)
         self.pitch_controller_.setMaxWindup(config.pitch_ki_max)
         self.pitch_controller_.setKD(config.pitch_kd)
 
-        self.yaw_controller_.setTarget(config.yaw_set_point)
         self.yaw_controller_.setKP(config.yaw_kp)
         self.yaw_controller_.setKI(config.yaw_ki)
         self.yaw_controller_.setMaxWindup(config.yaw_ki_max)
         self.yaw_controller_.setKD(config.yaw_kd)
+
+        # Dynamic Reconfig Setpoint
+        if config.use_dr_set_point:
+            self.roll_controller_.setTarget(config.roll_set_point)
+            self.pitch_controller_.setTarget(config.pitch_set_point)
+            self.yaw_controller_.setTarget(config.yaw_set_point)
 
         return config
 
@@ -92,7 +95,6 @@ class AttitudeControllerNode():
         self.last_imu_ = Imu()
         self.z_thrust_ = 0.0
         return EmptyResponse()
-
 
     def cmd_attitude_callback(self, attitude_vector):
         self.roll_controller_.setTarget(attitude_vector.x)
