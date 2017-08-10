@@ -17,7 +17,7 @@ $ source devel/setup.bash
 $ roslaunch quad_controller hover_controller.launch
 ```
 Now, with the hover controller launched, you can launch the quad simulator on your host platform.
-The details surrounding this process will be be different for each host platform (Win/Mac/Linux),
+The details surrounding this process will be be different for each host platform (Win/Mac/Linux).
 please see "Using the Simulator" below.
 
 **Step 3: Tuning Parameters**
@@ -177,3 +177,11 @@ $ rosservice call /quad_rotor/set_pose "pose:
     z: 0.0
     w: 0.0" 
 ```
+
+**Using the Simulator**
+
+First be sure to grab the newest version of the simulator for your host computer OS [here](https://github.com/udacity/RoboND-Controls-Lab/releases).
+
+If using the VM, inside the simulators _data or /Contents folder, edit ros_settings.txt and set vm-ip to the VM’s ip address and set Override to `true`. If not using a VM, no edit is necessary.
+
+To find the ip of your VM, type `ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'` into a terminal of your choice
