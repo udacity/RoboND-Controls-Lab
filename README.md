@@ -63,6 +63,7 @@ How can you modify the code to overcome this issue?
 # Attitude Controller #
 The attitude controller is responsible for controlling the roll, pitch, and yaw angle of the quad rotor.
 You can tune it very similarly to how you tuned the hover controller!
+Note: ZN/Twiddle Tuner nodes only work with the Hover controller.
 
 **Step 1: Launch the Attitude Controller**
 ```
