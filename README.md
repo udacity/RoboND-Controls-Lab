@@ -178,10 +178,10 @@ $ rosservice call /quad_rotor/set_pose "pose:
     w: 0.0" 
 ```
 
-**Using the Simulator**
+# Using the Simulator #
 
 First be sure to grab the newest version of the simulator for your host computer OS [here](https://github.com/udacity/RoboND-Controls-Lab/releases).
 
-If using the VM, inside the simulators _data or /Contents folder, edit ros_settings.txt and set vm-ip to the VM’s ip address and set Override to `true`. If not using a VM, no edit is necessary.
+If using the VM, inside the simulator's `_data` or `/Contents` folder, edit `ros_settings.txt` and set `vm-ip` to the VM’s IP address and set Override to `true`. If not using a VM, no edit is necessary.
 
 To find the ip of your VM, type `ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'` into a terminal of your choice
