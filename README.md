@@ -9,7 +9,7 @@ Add the PID class you wrote to `quad_controller/src/quad_controller/pid_controll
 After you have added the PID class, you can launch the hover controller.
 To do so, run the following commands in your terminal:
 ```
-$ cd ~/catkin/ws
+$ cd ~/catkin_ws/
 $ catkin_make
 $ source devel/setup.bash
 $ roslaunch quad_controller hover_controller.launch
