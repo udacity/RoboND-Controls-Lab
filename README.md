@@ -2,7 +2,7 @@
 # Hover Controller #
 **Step 1: Writing the PID Class**
 
-Add the PID class you wrote to `quad_controller/src/quad_rotor/pid_controller.py`
+Add the PID class you wrote to `quad_controller/src/quad_controller/pid_controller.py`
 
 **Step 2: Running the Hover Controller**
 
