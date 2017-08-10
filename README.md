@@ -5,6 +5,7 @@
 Add the PID class you wrote to `quad_controller/src/quad_controller/pid_controller.py`
 
 **Step 2: Running the Hover Controller**
+**NOTE: Launch Unity First**
 
 After you have added the PID class, you can launch the hover controller.
 To do so, run the following commands in your terminal:
