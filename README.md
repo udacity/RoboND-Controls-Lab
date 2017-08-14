@@ -180,7 +180,7 @@ $ rosservice call /quad_rotor/set_pose "pose:
 
 # Using the Simulator #
 
-First be sure to grab the newest version of the simulator for your host computer OS [here](https://github.com/udacity/RoboND-Controls-Lab/releases).
+First be sure to grab the newest version of the simulator for your host computer OS [here](https://github.com/udacity/RoboND-Controls-Lab/releases). **Please note that you cannot use the simulator inside of the Udacity supplied course VM (Virtual Machine). You have to use the simulator for your host operating system and connect it to your VM**
 
 If using the VM, inside the simulator's `_data` or `/Contents` folder, edit `ros_settings.txt` and set `vm-ip` to the VM’s IP address and set Override to `true`. If not using a VM, no edit is necessary.
 
