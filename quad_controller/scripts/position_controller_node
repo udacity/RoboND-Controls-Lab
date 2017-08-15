@@ -112,10 +112,8 @@ class PositionControllerNode():
         self.z_controller_.setTarget(goal_point_msg.z)
 
     def pose_callback(self, pose_msg):
-        # TODO this value still needs more tuning
-        # In order for cascaded PID to work, the position controller must be
-        # much slower than the attitude controller.
-        if self.counter >= 5 or self.first_pose_received_ is False:
+
+        if self.counter >= 10 or not self.first_pose_received_:
             self.counter = 0
 
             # Initial goal should be starting position.
@@ -126,29 +124,25 @@ class PositionControllerNode():
             t = pose_msg.header.stamp.to_sec()
 
             # Control Roll to to move along Y
-            roll_cmd = - self.y_controller_.update(pose_msg.pose.position.y,t)
+            roll_cmd = -(1/9.81) * self.y_controller_.update(pose_msg.pose.position.y, t)
 
             # Control Pitch to move along X
-            pitch_cmd = self.x_controller_.update(pose_msg.pose.position.x, t)
+            pitch_cmd = (1/9.81) * self.x_controller_.update(pose_msg.pose.position.x, t)
 
             # Control Thrust to move along Z
             thrust = self.z_controller_.update(pose_msg.pose.position.z, t)
-            g  = -9.81
-            m = 2
 
-            thrust = thrust - m*g # compensate for gravity
-
-            # TODO do we need to scale this?
-            roll =  limit(roll_cmd/(-m*g), -15*(math.pi/180), +15*(math.pi/180))
-            pitch = limit(pitch_cmd/(-m*g), -15*(math.pi/180), +15*(math.pi/180))
-
+            roll =  limit(roll_cmd, -15*(math.pi/180), +15*(math.pi/180))
+            pitch = limit(pitch_cmd, -15*(math.pi/180), +15*(math.pi/180))
 
             rpy_cmd = Vector3()
             cmd_z_thrust = Float64()
 
             rpy_cmd.x = roll
             rpy_cmd.y = pitch
-            cmd_z_thrust.data = thrust
+
+            # Compensate for g and clip thrust
+            cmd_z_thrust.data = limit(thrust + 2 * 9.81, -30+2*9.81, 30+2*9.81)
 
             rospy.logdebug('roll:{}, pitch:{}, z_thrust:{}'.format(roll, pitch, thrust))
             self.cmd_attitude_pub_.publish(rpy_cmd)

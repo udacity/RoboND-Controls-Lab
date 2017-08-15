@@ -8,6 +8,8 @@
     <rosparam command="load" file="$(find quad_controller)/config/attitude_controller_config.yaml" />
   </node>
 
+  <node name="quaternion_to_euler_node" pkg="quad_controller" type="quaternion_to_euler_node" output="screen"/>
+
   <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" />
 
 </launch>
