@@ -85,7 +85,7 @@ you can begin to work on the positional controller. The positional controller is
 responsible for commanding the attitude and thrust vectors in order to acheive a
 goal orientation in three dimensional space.
 
-Luckily, you've likely found some pretty decent PID paramters in your previous exploration.
+Luckily, you've likely found some pretty decent PID parameters in your previous exploration.
 If you're fortunate, these parameters will work for you... However, even if they don't
 we've got you covered. There's all sorts of additional tooling that you can use to
 troubleshoot and tune positional control of your quad!
@@ -118,11 +118,11 @@ life a little bit easier.
 It is possible to constrain forces and torques on the quad rotor's body frame.
 This can be useful if you're trying to debug only a single degree of freedom.
 
-Example: Dissalow movement along the quad's X axis
+Example: Disallow movement along the quad's X axis
 ```
 $ rosservice call /quad_rotor/x_force_constrained "data: true"
 ```
-Example: Dissallow rotation about the quad's X axis
+Example: Disallow rotation about the quad's X axis
 ```
 $ rosservice call /quad_rotor/x_torque_constrained "data: true"
 ```
