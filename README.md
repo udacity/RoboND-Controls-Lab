@@ -1,4 +1,6 @@
 
+# Table of Contents #
+
 [Hover Controller](#hover-controller)
 
 [Attitude Controller](#attitude-controller)
@@ -117,7 +119,7 @@ COMING SOON!
 
 COMING SOON!
 
-# Additional Helpful Tools for Debugging/Tuning #
+# Additional Helpful Tools #
 With so many degrees of freedom, debugging and troubleshooting can be a painful process.
 In order to make things a little bit simpler, we've provided some tools that might make
 life a little bit easier.
