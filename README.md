@@ -1,11 +1,19 @@
 [![Udacity - Robotics NanoDegree Program](https://s3-us-west-1.amazonaws.com/udacity-robotics/Extra+Images/RoboND_flag.png)](https://www.udacity.com/robotics)
 
+# Table of Contents #
+
+- [Hover Controller](#hover-controller)
+- [Attitude Controller](#attitude-controller)
+- [Position Controller](#position-controller)
+- [Additional Helpful Tools](#additional-helpful-tools)
+- [Using the Simulator](#using-the-simulator)
+
 # Hover Controller #
-**Step 1: Writing the PID Class**
+### Step 1: Writing the PID Class ###
 
 Add the PID class you wrote to `quad_controller/src/quad_controller/pid_controller.py`
 
-**Step 2: Running the Hover Controller**
+### Step 2: Running the Hover Controller ###
 
 **NOTE: Launch `roscore` first, then Unity**
 
@@ -21,7 +29,7 @@ Now, with the hover controller launched, you can launch the quad simulator on yo
 The details surrounding this process will be be different for each host platform (Win/Mac/Linux).
 please see "Using the Simulator" below.
 
-**Step 3: Tuning Parameters**
+### Step 3: Tuning Parameters ###
 Now that Unity has been launched, verify that you can see poses being published by the simulator
 on the `/quad_rotor/pose` topic:
 ```
@@ -66,12 +74,12 @@ The attitude controller is responsible for controlling the roll, pitch, and yaw 
 You can tune it very similarly to how you tuned the hover controller!
 Note: ZN/Twiddle Tuner nodes only work with the Hover controller.
 
-**Step 1: Launch the Attitude Controller**
+### Step 1: Launch the Attitude Controller ###
 ```
 $ roslaunch quad_controller attitude_controller.launch
 ```
 
-**Step 2: Launch the Attitude Controller**
+### Step 2: Launch the Attitude Controller ###
 
 Tune roll and pitch PID parmaeters until things look good.
 You'll also need to write down these PID parameters.
@@ -90,30 +98,30 @@ If you're fortunate, these parameters will work for you... However, even if they
 we've got you covered. There's all sorts of additional tooling that you can use to
 troubleshoot and tune positional control of your quad!
 
-**Step 1: Launch the Positional Controller**
+### Step 1: Launch the Positional Controller ###
 ```
 $roslaunch quad_controller position_controller.launch
 ```
 
-**Step 2: Tuning Parameters** 
+### Step 2: Tuning Parameters ### 
 
 Tune parameters until the controller is well-behaved.
 This should not be a very familiar, albeit potentially more difficult problem.
 
-**Step 3: Test Against a Desired Trajectory**
+### Step 3: Test Against a Desired Trajectory ###
 
 COMING SOON!
 
-**Step 4: Plotting and Scoring** 
+### Step 4: Plotting and Scoring ### 
 
 COMING SOON!
 
-# Additional Helpful Tools for Debugging/Tuning #
+# Additional Helpful Tools #
 With so many degrees of freedom, debugging and troubleshooting can be a painful process.
 In order to make things a little bit simpler, we've provided some tools that might make
 life a little bit easier.
 
-**Constraining Forces and Torques**
+### Constraining Forces and Torques ###
 
 It is possible to constrain forces and torques on the quad rotor's body frame.
 This can be useful if you're trying to debug only a single degree of freedom.
@@ -127,7 +135,7 @@ Example: Disallow rotation about the quad's X axis
 $ rosservice call /quad_rotor/x_torque_constrained "data: true"
 ```
 
-**Setting the Camera Pose**
+### Setting the Camera Pose ###
 
 To set the camera pose you can either, right click in the simulator, and drag
 or you can use the following service call, where the data parameter may take on the following
@@ -142,7 +150,7 @@ $ rosservice call /quad_rotor/camera_pose_type "data: 0"
 ```
 To reset the camera pose, to the default pose, you can use the service call, or right click.
 
-**Setting the Camera Distance**
+### Setting the Camera Distance ###
 
 To set the distance between the camera and the quad's body frame, you can use the
 `/quad_rotor/camera_distance` service. For example, to set the camera distance to be
@@ -153,7 +161,7 @@ $ rosservice call /quad_rotor/camera_distance "data: 20.0"
 
 To reset the camera distance to the default, simply right click in the simulator.
 
-**Disabling Gravity**
+### Disabling Gravity ###
 
 Gravity can be a harsh reality. Particularly when you're dealing with attitude tuning.
 Fortunately, we can disable gravity in the simulator for the purposes of debugging.
@@ -162,7 +170,7 @@ To do so, call the `/quad_rotor/gravity` service as follows:
 $ rosservice call /quad_rotor/gravity "data: false"
 ```
 
-**Setting Pose**
+### Setting Pose ###
 
 To set the quad pose, use the `/quad_rotor/set_pose` service. The following service call
 will place the quad at the origin:
@@ -178,6 +186,31 @@ $ rosservice call /quad_rotor/set_pose "pose:
     z: 0.0
     w: 0.0" 
 ```
+
+### Plotting using `quad_plotter_node` ###
+
+The `quad_plotter_node` is a handy tool which allows you to capture and plot quad movements.
+This might be useful to you while you are tuning the quad rotor in simulation.
+
+**Services:**
+ - `/quad_plotter/start_recording` - Begins recording plot data (poses)
+ - `/quad_plotter/stop_recording` - Stops recording plot data (poses)
+ - `/quad_plotter/clear_path_history` - Clear plot history (poses)
+ - `/quad_plotter/clear_waypoints` - Clear waypoints
+ - `/quad_plotter/load_waypoints_from_sim` - Gets waypoints from the drone simulator
+ - `/quad_plotter/get_path_history` - Returns path history as pose array
+ - `/quad_plotter/plot_one` - Plots a 2D path on a given plane (*plane selection coming soon!*)
+ - `/quad_plotter/plot_3d` - Create a 3D plot depicting path in perspective
+ - `/quad_plotter/plot_grid` - Create a grid plot, showing 4 different views
+ 
+**Example: Capturing a Grid Plot**
+1. Load waypoints from the simulator (optional) `$ rosservice call /quad_plotter/load_waypoints_from_sim`
+2. Begin recording poses `$ rosservice call /quad_plotter/start_recording "{}"`
+3. Perform the behavior that you wish to capture in the simulator.
+4. Stop recording poses `$ rosservice call /quad_plotter/stop_recording "{}"`
+5. Generate the plot `$ rosservice call /quad_plotter/plot_gird "{}"`
+   
+After performing the above steps, a new timestamped PNG image should be generated and placed in the `/quad_controller/output_data` directory.
 
 # Using the Simulator #
 
