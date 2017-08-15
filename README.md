@@ -140,7 +140,7 @@ values:
 ```
 $ rosservice call /quad_rotor/camera_pose_type "data: 0"
 ```
-To reset the camera pose, to the default pose, you ca use the service call, or right click.
+To reset the camera pose, to the default pose, you can use the service call, or right click.
 
 **Setting the Camera Distance**
 
@@ -157,7 +157,7 @@ To reset the camera distance to the default, simply right click in the simulator
 
 Gravity can be a harsh reality. Particularly when you're dealing with attitude tuning.
 Fortunately, we can disable gravity in the simulator for the purposes of debugging.
-To so, call the `/quad_rotor/gravity` service as follows:
+To do so, call the `/quad_rotor/gravity` service as follows:
 ```
 $ rosservice call /quad_rotor/gravity "data: false"
 ```
@@ -183,6 +183,6 @@ $ rosservice call /quad_rotor/set_pose "pose:
 
 First be sure to grab the newest version of the simulator for your host computer OS [here](https://github.com/udacity/RoboND-Controls-Lab/releases). **Please note that you cannot use the simulator inside of the Udacity supplied course VM (Virtual Machine). You have to use the simulator for your host operating system and connect it to your VM**
 
-If using the VM, inside the simulator's `_data` or `/Contents` folder, edit `ros_settings.txt` and set `vm-ip` to the VM’s IP address and set Override to `true`. If not using a VM, no edit is necessary.
+If using the VM, inside the simulator's `_data` or `/Contents` folder, edit `ros_settings.txt` and set `vm-ip` to the VM’s IP address and set `vm-override` to `true`. If not using a VM, no edit is necessary.
 
 To find the ip of your VM, type `ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'` into a terminal of your choice
