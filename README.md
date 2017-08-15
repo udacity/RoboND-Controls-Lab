@@ -1,22 +1,18 @@
 
 # Table of Contents #
 
-[Hover Controller](#hover-controller)
-
-[Attitude Controller](#attitude-controller)
-
-[Position Controller](#position-controller)
-
-[Additional Helpful Tools](#additional-helpful-tools)
-
-[Using the Simulator](#using-the-simulator)
+- [Hover Controller](#hover-controller)
+- [Attitude Controller](#attitude-controller)
+- [Position Controller](#position-controller)
+- [Additional Helpful Tools](#additional-helpful-tools)
+- [Using the Simulator](#using-the-simulator)
 
 # Hover Controller #
-**Step 1: Writing the PID Class**
+### Step 1: Writing the PID Class ###
 
 Add the PID class you wrote to `quad_controller/src/quad_controller/pid_controller.py`
 
-**Step 2: Running the Hover Controller**
+### Step 2: Running the Hover Controller ###
 
 **NOTE: Launch `roscore` first, then Unity**
 
@@ -32,7 +28,7 @@ Now, with the hover controller launched, you can launch the quad simulator on yo
 The details surrounding this process will be be different for each host platform (Win/Mac/Linux).
 please see "Using the Simulator" below.
 
-**Step 3: Tuning Parameters**
+### Step 3: Tuning Parameters ###
 Now that Unity has been launched, verify that you can see poses being published by the simulator
 on the `/quad_rotor/pose` topic:
 ```
@@ -77,12 +73,12 @@ The attitude controller is responsible for controlling the roll, pitch, and yaw 
 You can tune it very similarly to how you tuned the hover controller!
 Note: ZN/Twiddle Tuner nodes only work with the Hover controller.
 
-**Step 1: Launch the Attitude Controller**
+### Step 1: Launch the Attitude Controller ###
 ```
 $ roslaunch quad_controller attitude_controller.launch
 ```
 
-**Step 2: Launch the Attitude Controller**
+### Step 2: Launch the Attitude Controller ###
 
 Tune roll and pitch PID parmaeters until things look good.
 You'll also need to write down these PID parameters.
@@ -101,21 +97,21 @@ If you're fortunate, these parameters will work for you... However, even if they
 we've got you covered. There's all sorts of additional tooling that you can use to
 troubleshoot and tune positional control of your quad!
 
-**Step 1: Launch the Positional Controller**
+### Step 1: Launch the Positional Controller ###
 ```
 $roslaunch quad_controller position_controller.launch
 ```
 
-**Step 2: Tuning Parameters** 
+### Step 2: Tuning Parameters ### 
 
 Tune parameters until the controller is well-behaved.
 This should not be a very familiar, albeit potentially more difficult problem.
 
-**Step 3: Test Against a Desired Trajectory**
+### Step 3: Test Against a Desired Trajectory ###
 
 COMING SOON!
 
-**Step 4: Plotting and Scoring** 
+### Step 4: Plotting and Scoring ### 
 
 COMING SOON!
 
@@ -124,7 +120,7 @@ With so many degrees of freedom, debugging and troubleshooting can be a painful 
 In order to make things a little bit simpler, we've provided some tools that might make
 life a little bit easier.
 
-**Constraining Forces and Torques**
+### Constraining Forces and Torques ###
 
 It is possible to constrain forces and torques on the quad rotor's body frame.
 This can be useful if you're trying to debug only a single degree of freedom.
@@ -138,7 +134,7 @@ Example: Dissallow rotation about the quad's X axis
 $ rosservice call /quad_rotor/x_torque_constrained "data: true"
 ```
 
-**Setting the Camera Pose**
+### Setting the Camera Pose ###
 
 To set the camera pose you can either, right click in the simulator, and drag
 or you can use the following service call, where the data parameter may take on the following
@@ -153,7 +149,7 @@ $ rosservice call /quad_rotor/camera_pose_type "data: 0"
 ```
 To reset the camera pose, to the default pose, you ca use the service call, or right click.
 
-**Setting the Camera Distance**
+### Setting the Camera Distance ###
 
 To set the distance between the camera and the quad's body frame, you can use the
 `/quad_rotor/camera_distance` service. For example, to set the camera distance to be
@@ -164,7 +160,7 @@ $ rosservice call /quad_rotor/camera_distance "data: 20.0"
 
 To reset the camera distance to the default, simply right click in the simulator.
 
-**Disabling Gravity**
+### Disabling Gravity ###
 
 Gravity can be a harsh reality. Particularly when you're dealing with attitude tuning.
 Fortunately, we can disable gravity in the simulator for the purposes of debugging.
@@ -173,7 +169,7 @@ To so, call the `/quad_rotor/gravity` service as follows:
 $ rosservice call /quad_rotor/gravity "data: false"
 ```
 
-**Setting Pose**
+### Setting Pose ###
 
 To set the quad pose, use the `/quad_rotor/set_pose` service. The following service call
 will place the quad at the origin:
