@@ -186,6 +186,31 @@ $ rosservice call /quad_rotor/set_pose "pose:
     w: 0.0" 
 ```
 
+### Plotting using `quad_plotter_node` ###
+
+The `quad_plotter_node` is a handy tool which allows you to capture and plot quad movements.
+This might be useful to you while you are tuning the quad rotor in simulation.
+
+**Services:**
+ - `/quad_plotter/start_recording` - Begins recording plot data (poses)
+ - `/quad_plotter/stop_recording` - Stops recording plot data (poses)
+ - `/quad_plotter/clear_path_history` - Clear plot history (poses)
+ - `/quad_plotter/clear_waypoints` - Clear waypoints
+ - `/quad_plotter/load_waypoints_from_sim` - Gets waypoints from the drone simulator
+ - `/quad_plotter/get_path_history` - Returns path history as pose array
+ - `/quad_plotter/plot_one` - Plots a 2D path on a given plane (*plane selection coming soon!*)
+ - `/quad_plotter/plot_3d` - Create a 3D plot depicting path in perspective
+ - `/quad_plotter/plot_grid` - Create a grid plot, showing 4 different views
+ 
+**Example: Capturing a Grid Plot**
+1. Load waypoints from the simulator (optional) `$ rosservice call /quad_plotter/load_waypoints_from_sim`
+2. Begin recording poses `$ rosservice call /quad_plotter/start_recording "{}"`
+3. Perform the behavior that you wish to capture in the simulator.
+4. Stop recording poses `$ rosservice call /quad_plotter/stop_recording "{}"`
+5. Generate the plot `$ rosservice call /quad_plotter/plot_gird "{}"`
+   
+After performing the above steps, a new timestamped PNG image should be generated and placed in the `/quad_controller/output_data` directory.
+
 # Using the Simulator #
 
 First be sure to grab the newest version of the simulator for your host computer OS [here](https://github.com/udacity/RoboND-Controls-Lab/releases).
