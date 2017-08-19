@@ -119,7 +119,7 @@ def algorithm(pid_params):
     # Make the movement happen, stopping when some criteria has been met
     dyn_reconf_client.update_configuration({'target': 20.0,
                                             'kp': pid_params[0],
-                                            # 'ki': pid_params[1],
+                                            'ki': pid_params[1],
                                             'kd': pid_params[2]})
     curr_test_run.reset()
     curr_test_run.start()
