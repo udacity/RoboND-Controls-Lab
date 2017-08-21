@@ -214,8 +214,10 @@ After performing the above steps, a new timestamped PNG image should be generate
 
 # Using the Simulator #
 
-First be sure to grab the newest version of the simulator for your host computer OS [here](https://github.com/udacity/RoboND-Controls-Lab/releases). **Please note that you cannot use the simulator inside of the Udacity supplied course VM (Virtual Machine). You have to use the simulator for your host operating system and connect it to your VM**
+First be sure to grab the newest version of the simulator for your host computer OS [here](https://github.com/udacity/RoboND-Controls-Lab/releases). **Please note that you cannot use the simulator inside of the Udacity supplied course VM (Virtual Machine). You have to use the simulator for your host operating system and connect it to your VM.**
 
 If using the VM, inside the simulator's `_data` or `/Contents` folder, edit `ros_settings.txt` and set `vm-ip` to the VM’s IP address and set `vm-override` to `true`. If not using a VM, no edit is necessary.
 
 To find the ip of your VM, type `ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'` into a terminal of your choice
+
+**Note: Be sure to use at least V2.1.0 of the Udacity provided VM for this lab**
