@@ -18,6 +18,8 @@ class Twiddle():
         for i in range(len(self.params_)):
             #Update parameter and run algorithm
             self.params_[i] += self.dp_[i]
+            if self.params_[i] < 0:
+                self.params_[i] = 0  
             err = self.algorithm_(self.params_)
 
             if err < self.best_err_:
@@ -27,6 +29,8 @@ class Twiddle():
             else:
                 #The error actually got worse, decrease the parameter
                 self.params_[i] -= 2 * self.dp_[i]
+                if self.params_[i] < 0:
+                    self.params_[i] = 0 
                 err = self.algorithm_(self.params_)
 
                 if err < self.best_err_:
@@ -34,6 +38,8 @@ class Twiddle():
                     self.dp_[i] *= 1.1
                 else:
                     self.params_[i] += self.dp_[i]
+                    if self.params_[i] < 0:
+                        self.params_[i] = 0 
                     self.dp_[i] *= 0.9
         self.iterations_ += 1
         return self.iterations_, self.params_, self.best_err_
