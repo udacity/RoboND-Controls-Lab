@@ -108,14 +108,6 @@ $roslaunch quad_controller position_controller.launch
 Tune parameters until the controller is well-behaved.
 This should not be a very familiar, albeit potentially more difficult problem.
 
-### Step 3: Test Against a Desired Trajectory ###
-
-COMING SOON!
-
-### Step 4: Plotting and Scoring ### 
-
-COMING SOON!
-
 # Additional Helpful Tools #
 With so many degrees of freedom, debugging and troubleshooting can be a painful process.
 In order to make things a little bit simpler, we've provided some tools that might make
