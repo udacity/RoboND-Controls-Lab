@@ -36,6 +36,7 @@ def limit(value, min_value, max_value):
 class PositionControllerNode():
     def __init__(self):
         self.first_pose_received_ = False
+        self.counter = 0
 
         # X PID Config
         x_kp = float(rospy.get_param('x_kp', '0'))
@@ -67,7 +68,6 @@ class PositionControllerNode():
         self.cmd_attitude_pub_ = rospy.Publisher('/quad_rotor/cmd_attitude', Vector3, queue_size=10)
 
         srv = Server(position_controller_paramsConfig, self.config_callback)
-        self.counter = 0
 
     def config_callback(self, config, level):
         rospy.loginfo('Position controller node config changed!')
