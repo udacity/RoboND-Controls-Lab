@@ -1,4 +1,4 @@
-# Copyright (C) 2017 Electric Movement Inc.
+# Copyright (C) 2017 Udacity Inc.
 # All Rights Reserved.
 
 # Author: Brandon Kinman

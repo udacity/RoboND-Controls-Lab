@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Copyright (C) 2017 Electric Movement Inc.
+# Copyright (C) 2017 Udacity Inc.
 # All Rights Reserved.
 
 # Author: Brandon Kinman
@@ -25,12 +25,12 @@ class HoverTestRun:
         self.max_duration_ = 10
         self.start_time_ = 0
         self.duration_ = 0
-    
+
     def addPose(self ,pose_stamped):
         if self.is_started_ is False:
             return
         if self.start_time_ is 0:
-            self.start_time_ = pose_stamped.header.stamp 
+            self.start_time_ = pose_stamped.header.stamp
             return
         self.test_data_.append((pose_stamped.header.stamp, pose_stamped.pose.position.z))
 
@@ -53,11 +53,11 @@ class HoverTestRun:
         else:
             return False
 
-        # Test if finished it the number of oscillations are 
-    
+        # Test if finished it the number of oscillations are
+
     def reset(self):
         self.__init__()
-    
+
     def start(self):
         self.is_started_ = True
 
@@ -76,7 +76,7 @@ def initial_setup():
         # Reset the forces and velocities on the quad
         reset_force_vel = rospy.ServiceProxy('/quad_rotor/reset_orientation', SetBool)
         reset_force_vel(True)
-        
+
         # Call service to set position
         set_position = rospy.ServiceProxy('/quad_rotor/set_pose', SetPose)
         initial_pose = Pose()
@@ -93,9 +93,9 @@ def initial_setup():
         x_torque_constrained = rospy.ServiceProxy('/quad_rotor/x_torque_constrained', SetBool)
         y_torque_constrained = rospy.ServiceProxy('/quad_rotor/y_torque_constrained', SetBool)
         z_torque_constrained = rospy.ServiceProxy('/quad_rotor/z_torque_constrained', SetBool)
-        x_torque_constrained(True) 
-        y_torque_constrained(True) 
-        z_torque_constrained(True) 
+        x_torque_constrained(True)
+        y_torque_constrained(True)
+        z_torque_constrained(True)
 
         #Set camera pose to be aligned to X-axis (1)
         camera_pose_type = rospy.ServiceProxy('/quad_rotor/camera_pose_type', SetInt)
@@ -107,7 +107,7 @@ def setup_test():
         # Reset the forces and velocities on the quad
         reset_force_vel = rospy.ServiceProxy('/quad_rotor/reset_orientation', SetBool)
         reset_force_vel(True)
-        
+
         # Call service to set position
         set_position = rospy.ServiceProxy('/quad_rotor/set_pose', SetPose)
         initial_pose = Pose()
@@ -126,7 +126,7 @@ def algorithm(pid_params):
 
     while not curr_test_run.isFinished():
         rate.sleep()
-    
+
     error = curr_test_run.computeTotalError(20.0)
 
     # return the error, here lower error is better.
@@ -164,5 +164,5 @@ if __name__ == '__main__':
 
     try:
         main()
-    except rospy.ROSInterruptException: 
+    except rospy.ROSInterruptException:
         pass
